@@ -18,12 +18,40 @@ rex = 1/button_column #ratio
 rey = 1/button_row #ratio
 
 # function area
+def GetColor(r,g,b):
+    return '#'+format(r,'X')+format(g,'X')+format(b,'X')
+
+def TopMostScreen(onoff):
+    main_window.wm_attributes("-topmost", onoff)
+
 def Toplevel_Setting():
     setting_window = tkinter.Tk()
     setting_window.title("프로그램 설정")
-    setting_window.geometry("500x500+100+100")
+    setting_window.geometry("250x250+100+100")
     setting_window.resizable(False, False)
-    #frame
+
+    notebook=tkinter.ttk.Notebook(setting_window)
+    notebook.place(relx=0, rely=0, relwidth = 1, relheight = 1)
+
+    #frame no.1 area
+    frame1=tkinter.Frame(setting_window)
+    notebook.add(frame1, text="창 크기 조정")
+    
+    #frame no.2 area
+    frame2=tkinter.Frame(setting_window)
+    notebook.add(frame2, text="항상 위 옵션")
+
+    topmost_onoff=tkinter.IntVar()
+
+    topmost_on = tkinter.Radiobutton(frame2, text="켜기", value=1, variable=topmost_onoff, command=lambda: TopMostScreen(1))
+    topmost_on.pack()
+    topmost_off = tkinter.Radiobutton(frame2, text="끄기", value=2, variable=topmost_onoff, command=lambda: TopMostScreen(0))
+    topmost_off.pack()
+
+    #frame no.3 area
+    frame3=tkinter.Frame(setting_window)
+    notebook.add(frame3, text="프로그램 색상")
+
     setting_window.mainloop()
 
 def Toplevel_Info():
