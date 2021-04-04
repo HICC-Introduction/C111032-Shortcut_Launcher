@@ -122,7 +122,7 @@ def SettingMenu():
     topmost_off = tkinter.Radiobutton(lbframe_topmost, text="끄기", value=2, variable=topmost_onoff, command=lambda: TopMostScreen(0))
     topmost_off.place(relx=0, rely=1/2, relwidth = 1, relheight = 1/2)
     
-    # frame no.2 area - color
+    # frame no.2 area - colorchange
     frame2=tkinter.Frame(setting_window)
     notebook.add(frame2, text="프로그램 색상")
     
